@@ -1,12 +1,12 @@
 {
-  "name": "@canhQworks/libraries",
+  "name": "@canhQworks/qwtimeline",
   "version": "0.0.1",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
   "files": [
     "dist"
   ],
-  "repository": "git://github.com/canhQworks/libraries.git",
+  "repository": "git://github.com/canhQworks/qwtimeline.git",
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
   },
