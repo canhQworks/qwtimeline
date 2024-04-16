@@ -5,6 +5,7 @@ import { Grid, Tooltip, Typography } from "@mui/material";
 import {
   Button
 } from "@mui/material";
+import { TimelineEventProps } from './TimelineEvent.types';
 
 const styles = {
   container: {
@@ -76,7 +77,7 @@ const styles = {
   }
 }
 
-const TimelineEvent = ({
+const TimelineEvent: React.FC<TimelineEventProps>  = ({
   classes,
   variant,
   first,
@@ -87,17 +88,6 @@ const TimelineEvent = ({
   action,
   titleProps,
   subtitleProps,
-}: {
-  classes?: any;
-  variant?: any;
-  first?: any;
-  color?: any;
-  icon?: any;
-  title?: any;
-  subtitle?: any;
-  action?: any;
-  titleProps?: any;
-  subtitleProps?: any;
 }) => {
   switch (variant) {
     case "small":
