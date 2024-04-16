@@ -53,6 +53,11 @@
     "typescript": "^5.3.3"
   },
   "dependencies": {
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.5",
+    "@mui/material": "^5.15.15",
+    "is-react": "^1.5.4",
+    "react-perfect-scrollbar": "^1.5.8",
     "styled-components": "^6.1.8"
   },
   "peerDependencies": {
