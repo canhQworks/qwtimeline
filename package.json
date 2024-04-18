@@ -13,8 +13,8 @@
   "module": "dist/esm/index.js",
   "types": "dist/index.d.ts",
   "keywords": [
-    "train",
-    "uikit",
+    "qworks",
+    "timeline",
     "package",
     "rollup"
   ],

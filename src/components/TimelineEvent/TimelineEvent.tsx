@@ -1,111 +1,40 @@
-import React, { Fragment } from 'react'
+import React, { Fragment } from "react";
 import isReact from "is-react";
 import { Grid, Tooltip, Typography } from "@mui/material";
 
-import {
-  Button
-} from "@mui/material";
-import { TimelineEventProps } from './TimelineEvent.types';
+import { Button } from "@mui/material";
+import { TimelineEventProps } from "./TimelineEvent.types";
 
-const styles = {
-  container: {
-    position: 'relative'
-  },
-  icon: {
-    position: 'absolute',
-    top: 16,
-    left: 92.5,
-    fontSize: 40,
-    color: '#fff'
-  },
-  iconSimple: {
-    left: 16
-  },
-  iconSmall: {
-    position: 'absolute',
-    top: 8,
-    left: 8,
-    fontSize: 16,
-    color: '#e0e0e0'
-  },
-  circleContainer: {
-    marginRight: 31
-  },
-  circleContainerSmall: {
-    display: 'flex',
-    flex: 'auto',
-    alignItems: 'center',
-    marginRight: 11,
-  },
-  action: {
-    '&:hover': {
-      cursor: 'pointer'
-    }
-  },
-  tooltip: {
-    textAlign: 'center'
-  },
-  barSimple: {
-    position: 'absolute',
-    top: '50%',
-    left: -31,
-    width: 31,
-    height: 3,
-    backgroundColor: '#f2f2f2'
-  },
-  barSmall: {
-    position: 'absolute',
-    top: '50%',
-    left: -11,
-    width: 11,
-    height: 3,
-    backgroundColor: '#f2f2f2'
-  },
-  textContainer: {
-    marginTop: -40,
-    textAlign: 'center'
-  },
-  actionContainer: {
-    margin: '16px auto',
-  },
-  buttonContainer: {
-    margin: '16px auto',
-    textAlign: 'center'
-  },
-  button: {
-    color: '#fff'
-  }
-}
-
-const TimelineEvent: React.FC<TimelineEventProps>  = ({
+const TimelineEvent: React.FC<TimelineEventProps> = ({
   classes,
   variant,
   first,
   color = "#e0e0e0",
   icon: Icon,
   title,
-  subtitle,
+  time,
   action,
-  titleProps,
-  subtitleProps,
+  timeProps,
+  direction = "top",
+  topic,
+  description,
 }) => {
   switch (variant) {
     case "small":
       return (
-        <Grid  sx={{ position: "relative" }}>
+        <Grid sx={{ position: "relative" }}>
           <Fragment>
             <Tooltip
               title={
                 <Grid sx={{ textAlign: "center" }}>
                   {title}
                   <br />
-                  {subtitle}
+                  {time}
                 </Grid>
               }
             >
               <Grid
                 onClick={action && action.onClick}
-               
                 sx={{
                   display: "flex",
                   flex: "auto",
@@ -116,7 +45,6 @@ const TimelineEvent: React.FC<TimelineEventProps>  = ({
               >
                 {Icon && (
                   <Icon
-                 
                     style={{ color }}
                     sx={{
                       position: "absolute",
@@ -140,31 +68,29 @@ const TimelineEvent: React.FC<TimelineEventProps>  = ({
                 </svg>
               </Grid>
             </Tooltip>
-            {!first && <Grid  />}
+            {!first && <Grid />}
           </Fragment>
         </Grid>
       );
     case "simple":
       return (
-        <Grid  sx={{ position: "relative" }}>
+        <Grid sx={{ position: "relative" }}>
           <Fragment>
             <Tooltip
               title={
-                <Grid  sx={{ textAlign: "center" }}>
+                <Grid sx={{ textAlign: "center" }}>
                   {title}
                   <br />
-                  {subtitle}
+                  {time}
                 </Grid>
               }
             >
               <Grid
                 onClick={action && action.onClick}
-      
                 sx={{ marginRight: "31px" }}
               >
                 {Icon && (
                   <Icon
-                 
                     sx={{
                       position: "absolute",
                       top: "16px",
@@ -189,7 +115,6 @@ const TimelineEvent: React.FC<TimelineEventProps>  = ({
             </Tooltip>
             {!first && (
               <Grid
-              
                 sx={{
                   position: "absolute",
                   top: "50%",
@@ -205,74 +130,162 @@ const TimelineEvent: React.FC<TimelineEventProps>  = ({
       );
     default:
       return (
-        <Grid  sx={{ position: "relative" }}>
+        <Grid sx={{ position: "relative" }}>
           <Fragment>
-            {Icon && (
-              <Icon
-              
-                sx={{
-                  position: "absolute",
-                  top: "16px",
-                  left: "92.5px",
-                  fontSize: "40px",
-                  color: "#fff",
-                }}
-              />
+            {direction == "top" ? (
+              <>
+                <Grid
+                  sx={{
+                    marginBottom: "16px",
+                    textAlign: "center",
+                    height: "58px",
+                  }}
+                >
+                  {typeof topic === "string" ? (
+                    <Typography variant="h6">{topic}</Typography>
+                  ) : (
+                    topic
+                  )}
+                  {typeof time === "string" ? (
+                    <Typography variant="caption" {...timeProps}>
+                      {time}
+                    </Typography>
+                  ) : (
+                    time
+                  )}
+                </Grid>
+                <div style={{ height: "272px", position: "relative" }}>
+                  {Icon && (
+                    <Icon
+                      sx={{
+                        position: "absolute",
+                        top: "16px",
+                        left: "92.5px",
+                        fontSize: "40px",
+                        color: "#fff",
+                      }}
+                    />
+                  )}
+                  <svg
+                    width="225"
+                    height="152"
+                    viewBox="0 0 225 152"
+                    fill={color}
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M112.503 0C131.833 0 147.503 15.67 147.503 35C147.503 54.33 131.833 70 112.503 70C93.1732 70 77.5032 54.33 77.5032 35C77.5032 15.67 93.1732 0 112.503 0Z"
+                      fill={color}
+                    />
+                    <path
+                      d="M114.003 120H111.003V70H114.003V120Z"
+                      fill={color}
+                    />
+                    <path
+                      d="M0.00244141 120H209.65L225.004 135.91L209.65 152H0.00244141L14.5477 135.91L0.00244141 120Z"
+                      fill={color}
+                    />
+                    <path
+                      d="M113 141C115.761 141 118 138.761 118 136C118 133.239 115.761 131 113 131C110.239 131 108 133.239 108 136C108 138.761 110.239 141 113 141Z"
+                      fill="white"
+                    />
+                  </svg>
+                  <Grid sx={{ position: "absolute", bottom: "0" }}>
+                    {typeof title === "string" ? (
+                      <Typography variant="h6">{title}</Typography>
+                    ) : (
+                      title
+                    )}
+                    {typeof description === "string" ? (
+                      <Typography variant="caption">{description}</Typography>
+                    ) : (
+                      description
+                    )}
+                  </Grid>
+                </div>
+              </>
+            ) : (
+              <>
+                <Grid
+                  sx={{
+                    marginBottom: "16px",
+                    textAlign: "center",
+                    height: "58px",
+                  }}
+                ></Grid>
+                <div
+                  style={{
+                    height: "272px",
+                    display: "flex",
+                    alignItems: "end",
+                    position: "relative",
+                  }}
+                >
+                  <Grid sx={{ position: "absolute", top: "0" }}>
+                    {typeof title === "string" ? (
+                      <Typography variant="h6">{title}</Typography>
+                    ) : (
+                      title
+                    )}
+                    {typeof description === "string" ? (
+                      <Typography variant="caption">{description}</Typography>
+                    ) : (
+                      description
+                    )}
+                  </Grid>
+                  <svg
+                    width="225"
+                    height="152"
+                    viewBox="0 0 225 152"
+                    fill={color}
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M112.503 152C131.833 152 147.503 136.33 147.503 117C147.503 97.67 131.833 82 112.503 82C93.1732 82 77.5032 97.67 77.5032 117C77.5032 136.33 93.1732 152 112.503 152Z"
+                      fill={color}
+                    />
+                    <path d="M114.003 32H111.003V82H114.003V32Z" fill={color} />
+                    <path
+                      d="M0.00244141 32H209.65L225.004 16.0899L209.65 -1.26982e-07H0.00244141L14.5477 16.0899L0.00244141 32Z"
+                      fill={color}
+                    />
+                    <path
+                      d="M113 11C115.761 11 118 13.2386 118 16C118 18.7614 115.761 21 113 21C110.239 21 108 18.7614 108 16C108 13.2386 110.239 11 113 11Z"
+                      fill="white"
+                    />
+                  </svg>
+                  {Icon && (
+                    <Icon
+                      sx={{
+                        position: "absolute",
+                        bottom: "16px",
+                        left: "92.5px",
+                        fontSize: "40px",
+                        color: "#fff",
+                      }}
+                    />
+                  )}
+                </div>
+
+                <Grid sx={{ textAlign: "center" }}>
+                  {typeof topic === "string" ? (
+                    <Typography variant="h6">{topic}</Typography>
+                  ) : (
+                    topic
+                  )}
+                  {typeof time === "string" ? (
+                    <Typography variant="caption" {...timeProps}>
+                      {time}
+                    </Typography>
+                  ) : (
+                    time
+                  )}
+                </Grid>
+              </>
             )}
-            <svg width={225} height={187} viewBox="0 0 59.531 49.477">
-              <g transform="matrix(.99959 0 0 .99838 -100.96 -38.57)">
-                <path
-                  d="M101.002 69.656h55.492l4.064 4.158-4.064 4.205h-55.492l3.85-4.205z"
-                  fill={color}
-                  strokeWidth={0.24}
-                />
-                <circle
-                  cx={130.726}
-                  cy={73.838}
-                  r={1.522}
-                  fill="#fff"
-                  strokeWidth={0.15}
-                />
-                <circle
-                  cx={130.78}
-                  cy={48.202}
-                  r={9.57}
-                  fill={color}
-                  strokeWidth={0.194}
-                />
-                <rect
-                  width={0.794}
-                  height={14.363}
-                  x={130.383}
-                  y={56.309}
-                  ry={0}
-                  fill={color}
-                  strokeWidth={0.108}
-                />
-              </g>
-            </svg>
-            <Grid
-             
-              sx={{ marginTop: "-40px", textAlign: "center" }}
-            >
-              {typeof title === "string" ? (
-                <Typography variant="h6" {...titleProps}>
-                  {title}
-                </Typography>
-              ) : (
-                title
-              )}
-              {typeof subtitle === "string" ? (
-                <Typography variant="caption" {...subtitleProps}>
-                  {subtitle}
-                </Typography>
-              ) : (
-                subtitle
-              )}
-            </Grid>
+
             {action && (
               <Grid
-             
                 sx={{
                   margin: "16px auto",
                 }}
@@ -281,7 +294,6 @@ const TimelineEvent: React.FC<TimelineEventProps>  = ({
                   action
                 ) : (
                   <Grid
-                 
                     sx={{
                       margin: "16px auto",
                       textAlign: "center",
@@ -290,7 +302,6 @@ const TimelineEvent: React.FC<TimelineEventProps>  = ({
                     <Button
                       size="small"
                       onClick={action.onClick}
-                 
                       style={{ backgroundColor: color }}
                       sx={{ color: "#fff" }}
                     >

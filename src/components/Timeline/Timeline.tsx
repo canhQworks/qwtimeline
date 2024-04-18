@@ -9,6 +9,7 @@ import {
 
 } from "@mui/material";
 import { TimelineProps } from './Timeline.types';
+import Placeholder from './Placeholder';
 // import Placeholder from './Placeholder';
 
 const styles = {
@@ -62,9 +63,9 @@ const renderPlaceholders = (props: any) => {
             <Grid
               key={index}
               className={classes?.middle}
-              sx={{ marginLeft: "-10px" }}
+              sx={{ marginLeft: "-10px", paddingTop: "78px" }}
             >
-              {/* <Placeholder /> */}
+              <Placeholder />
             </Grid>
           );
           break
@@ -81,7 +82,7 @@ const Timeline: React.FC<TimelineProps> = ({
   children,
   classes,
   variant = "default",
-  height = variant === "small" ? 95 : variant === "simple" ? 135 : 265,
+  height = variant === "small" ? 95 : variant === "simple" ? 135 : 470,
   minEvents = 0,
   maxEvents = 0,
   placeholder,
@@ -117,7 +118,7 @@ const Timeline: React.FC<TimelineProps> = ({
       <PerfectScrollbar {...PerfectScrollbarProps}>
         <CssBaseline />
         <Grid
-          sx={{ display: "inline-flex", flex: "1 1 auto" }}
+          sx={{ display: "inline-flex", flex: "1 1 auto", paddingLeft: "16px" }}
           className={classes?.container}
         >
           {maxEvents ? (
@@ -133,6 +134,7 @@ const Timeline: React.FC<TimelineProps> = ({
                             index > 0 &&
                             index < children.length,
                         })}
+                        sx={{marginLeft: "-16px"}}
                       >
                         {child}
                       </Grid>
@@ -153,6 +155,7 @@ const Timeline: React.FC<TimelineProps> = ({
                         index > 0 &&
                         index < children.length,
                     })}
+                    sx={{marginLeft: "-16px"}}
                   >
                     {child}
                   </Grid>
