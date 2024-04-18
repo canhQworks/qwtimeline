@@ -82,7 +82,7 @@ const Timeline: React.FC<TimelineProps> = ({
   children,
   classes,
   variant = "default",
-  height = variant === "small" ? 95 : variant === "simple" ? 135 : 470,
+  height = variant === "small" ? 95 : variant === "simple" ? 135 : "auto",
   minEvents = 0,
   maxEvents = 0,
   placeholder,
