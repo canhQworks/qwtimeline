@@ -7,7 +7,9 @@ This is a package written for training and practice, the following technologies 
 - StoryBook
 - Jest
 
-Example
+Example:
+
+import { Timeline, TimelineEvent } from "qworks-timeline";
 
 <Timeline placeholder>
     <TimelineEvent
