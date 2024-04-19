@@ -11,13 +11,16 @@ const TimelineEvent: React.FC<TimelineEventProps> = ({
   first,
   color = "#e0e0e0",
   icon: Icon,
-  title,
-  time,
-  action,
-  timeProps,
-  direction = "top",
   topic,
+  topicProps,
+  time,
+  timeProps,
+  title,
+  titleProps,
   description,
+  descriptionProps,
+  action,
+  direction = "top",
 }) => {
   switch (variant) {
     case "small":
@@ -142,7 +145,9 @@ const TimelineEvent: React.FC<TimelineEventProps> = ({
                   }}
                 >
                   {typeof topic === "string" ? (
-                    <Typography variant="h6">{topic}</Typography>
+                    <Typography variant="h6" {...topicProps}>
+                      {topic}
+                    </Typography>
                   ) : (
                     topic
                   )}
@@ -192,12 +197,16 @@ const TimelineEvent: React.FC<TimelineEventProps> = ({
                   </svg>
                   <Grid sx={{ position: "absolute", bottom: "0" }}>
                     {typeof title === "string" ? (
-                      <Typography variant="h6">{title}</Typography>
+                      <Typography variant="h6" {...titleProps}>
+                        {title}
+                      </Typography>
                     ) : (
                       title
                     )}
                     {typeof description === "string" ? (
-                      <Typography variant="caption">{description}</Typography>
+                      <Typography variant="caption" {...descriptionProps}>
+                        {description}
+                      </Typography>
                     ) : (
                       description
                     )}
@@ -223,12 +232,16 @@ const TimelineEvent: React.FC<TimelineEventProps> = ({
                 >
                   <Grid sx={{ position: "absolute", top: "0" }}>
                     {typeof title === "string" ? (
-                      <Typography variant="h6">{title}</Typography>
+                      <Typography variant="h6" {...titleProps}>
+                        {title}
+                      </Typography>
                     ) : (
                       title
                     )}
                     {typeof description === "string" ? (
-                      <Typography variant="caption">{description}</Typography>
+                      <Typography variant="caption" {...descriptionProps}>
+                        {description}
+                      </Typography>
                     ) : (
                       description
                     )}
@@ -269,7 +282,9 @@ const TimelineEvent: React.FC<TimelineEventProps> = ({
 
                 <Grid sx={{ textAlign: "center" }}>
                   {typeof topic === "string" ? (
-                    <Typography variant="h6">{topic}</Typography>
+                    <Typography variant="h6" {...topicProps}>
+                      {topic}
+                    </Typography>
                   ) : (
                     topic
                   )}

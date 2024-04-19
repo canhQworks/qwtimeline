@@ -5,10 +5,13 @@ export interface TimelineEventProps {
     color?: any;
     icon?: any;
     topic?: any;
+    topicProps?: any;
     time?: any;
-    title?: any;
-    description?: any;
     timeProps?: any;
+    title?: any;
+    titleProps?: any;
+    description?: any;
+    descriptionProps?: any
     action?: any;
     direction? : string;
 }
