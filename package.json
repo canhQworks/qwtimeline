@@ -1,6 +1,6 @@
 {
   "name": "qworks-timeline",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "qworks-timeline component!",
   "scripts": {
     "build": "rimraf dist && rollup -c --bundleConfigAsCjs",

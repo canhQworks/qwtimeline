@@ -195,7 +195,9 @@ const TimelineEvent: React.FC<TimelineEventProps> = ({
                       fill="white"
                     />
                   </svg>
-                  <Grid sx={{ position: "absolute", bottom: "0" }}>
+                  <Grid
+                    sx={{ position: "absolute", bottom: "0", width: "100%" }}
+                  >
                     {typeof title === "string" ? (
                       <Typography variant="h6" {...titleProps}>
                         {title}
@@ -230,7 +232,7 @@ const TimelineEvent: React.FC<TimelineEventProps> = ({
                     position: "relative",
                   }}
                 >
-                  <Grid sx={{ position: "absolute", top: "0" }}>
+                  <Grid sx={{ position: "absolute", top: "0", width: "100%" }}>
                     {typeof title === "string" ? (
                       <Typography variant="h6" {...titleProps}>
                         {title}
