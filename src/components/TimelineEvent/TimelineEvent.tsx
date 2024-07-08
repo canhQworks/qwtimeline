@@ -139,9 +139,12 @@ const TimelineEvent: React.FC<TimelineEventProps> = ({
               <>
                 <Grid
                   sx={{
+                    position: "absolute",
+                    top: "16px",
+                    right: "8px",
                     marginBottom: "16px",
                     textAlign: "center",
-                    height: "58px",
+                    height: "58px"
                   }}
                 >
                   {typeof topic === "string" ? (
@@ -159,7 +162,7 @@ const TimelineEvent: React.FC<TimelineEventProps> = ({
                     time
                   )}
                 </Grid>
-                <div style={{ height: "272px", position: "relative" }}>
+                <div style={{ height: "142px", position: "relative" }}>
                   {Icon && (
                     <Icon
                       sx={{
@@ -172,47 +175,31 @@ const TimelineEvent: React.FC<TimelineEventProps> = ({
                     />
                   )}
                   <svg
-                    width="225"
-                    height="152"
+                    width="152"
+                    height="225"
                     viewBox="0 0 225 152"
                     fill={color}
                     xmlns="http://www.w3.org/2000/svg"
                   >
-                    <path
-                      d="M112.503 0C131.833 0 147.503 15.67 147.503 35C147.503 54.33 131.833 70 112.503 70C93.1732 70 77.5032 54.33 77.5032 35C77.5032 15.67 93.1732 0 112.503 0Z"
-                      fill={color}
-                    />
-                    <path
-                      d="M114.003 120H111.003V70H114.003V120Z"
-                      fill={color}
-                    />
-                    <path
-                      d="M0.00244141 120H209.65L225.004 135.91L209.65 152H0.00244141L14.5477 135.91L0.00244141 120Z"
-                      fill={color}
-                    />
-                    <path
-                      d="M113 141C115.761 141 118 138.761 118 136C118 133.239 115.761 131 113 131C110.239 131 108 133.239 108 136C108 138.761 110.239 141 113 141Z"
-                      fill="white"
-                    />
+                    <g transform="rotate(90, 112.5, 76)">
+                      <path
+                        d="M112.503 0C131.833 0 147.503 15.67 147.503 35C147.503 54.33 131.833 70 112.503 70C93.1732 70 77.5032 54.33 77.5032 35C77.5032 15.67 93.1732 0 112.503 0Z"
+                        fill={color}
+                      />
+                      <path
+                        d="M114.003 120H111.003V70H114.003V120Z"
+                        fill={color}
+                      />
+                      <path
+                        d="M0.00244141 120H209.65L225.004 135.91L209.65 152H0.00244141L14.5477 135.91L0.00244141 120Z"
+                        fill={color}
+                      />
+                      <path
+                        d="M113 141C115.761 141 118 138.761 118 136C118 133.239 115.761 131 113 131C110.239 131 108 133.239 108 136C108 138.761 110.239 141 113 141Z"
+                        fill="white"
+                      />
+                    </g>
                   </svg>
-                  <Grid
-                    sx={{ position: "absolute", bottom: "0", width: "100%" }}
-                  >
-                    {typeof title === "string" ? (
-                      <Typography variant="h6" {...titleProps}>
-                        {title}
-                      </Typography>
-                    ) : (
-                      title
-                    )}
-                    {typeof description === "string" ? (
-                      <Typography variant="caption" {...descriptionProps}>
-                        {description}
-                      </Typography>
-                    ) : (
-                      description
-                    )}
-                  </Grid>
                 </div>
               </>
             ) : (

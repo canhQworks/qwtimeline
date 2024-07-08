@@ -118,7 +118,7 @@ const Timeline: React.FC<TimelineProps> = ({
       <PerfectScrollbar {...PerfectScrollbarProps}>
         <CssBaseline />
         <Grid
-          sx={{ display: "inline-flex", flex: "1 1 auto", paddingLeft: "16px" }}
+          sx={{ display: "inline-flex", flex: "1 1 auto", paddingLeft: "16px", flexDirection: "column" }}
           className={classes?.container}
         >
           {maxEvents ? (
