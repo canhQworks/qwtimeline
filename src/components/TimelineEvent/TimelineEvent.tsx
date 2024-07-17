@@ -162,21 +162,23 @@ const TimelineEvent: React.FC<TimelineEventProps> = ({
                     zIndex: "9999999999",
                   }}
                 >
-                  {isCurrent && (typeof time === "string" ? (
-                    <Typography variant="caption" {...timeCurrentProps}>
-                      {time}
-                    </Typography>
-                  ) : (
-                    time
-                  ))}
+                  {isCurrent &&
+                    (typeof time === "string" ? (
+                      <Typography variant="caption" {...timeCurrentProps}>
+                        {time}
+                      </Typography>
+                    ) : (
+                      time
+                    ))}
 
-                  {!isCurrent && (typeof time === "string" ? (
-                    <Typography variant="caption" {...timeProps}>
-                      {time}
-                    </Typography>
-                  ) : (
-                    time
-                  ))}
+                  {!isCurrent &&
+                    (typeof time === "string" ? (
+                      <Typography variant="caption" {...timeProps}>
+                        {time}
+                      </Typography>
+                    ) : (
+                      time
+                    ))}
                 </Grid>
                 <Grid
                   sx={{
@@ -194,7 +196,11 @@ const TimelineEvent: React.FC<TimelineEventProps> = ({
                     justifyContent={"flex-start"}
                     alignItems={"center"}
                   >
-                    <Grid item xs={2} style={{ fontSize: "20px" }}>
+                    <Grid
+                      item
+                      xs={2}
+                      style={{ fontSize: "20px", color: color, fill: color }}
+                    >
                       {StatusIcon && <StatusIcon />}
                     </Grid>
                     <Grid item>
@@ -206,7 +212,7 @@ const TimelineEvent: React.FC<TimelineEventProps> = ({
                         title
                       )}
                     </Grid>
-                    <Grid item  style={{ color: "#5555DC" }} ml={2}>
+                    <Grid item style={{ color: "#5555DC" }} ml={2}>
                       {Icon && description && (
                         <Typography
                           aria-owns={open ? "mouse-over-popover" : undefined}
@@ -254,7 +260,7 @@ const TimelineEvent: React.FC<TimelineEventProps> = ({
                     >
                       <path
                         d="M86 100L86 -3.69549e-06"
-                        stroke="black"
+                        stroke={color}
                         stroke-width="4"
                         stroke-linejoin="round"
                       />
@@ -263,12 +269,12 @@ const TimelineEvent: React.FC<TimelineEventProps> = ({
                         cx="85.5"
                         cy="50"
                         r="3.5"
-                        stroke="black"
+                        stroke={color}
                         stroke-opacity="0.88"
                       />
                       <path
                         d="M117.387 50L114.5 47.1132L111.613 50L114.5 52.8868L117.387 50ZM90.5 50.5H114.5V49.5H90.5V50.5Z"
-                        fill="black"
+                        fill={color}
                         fill-opacity="0.88"
                       />
                       <defs>
@@ -327,44 +333,33 @@ const TimelineEvent: React.FC<TimelineEventProps> = ({
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"
                     >
-                      <rect
-                        x="4.5"
-                        y="40"
-                        width="73"
-                        height="20"
-                        rx="10"
-                        fill="white"
-                        fill-opacity="0.9"
-                      />
                       <path
                         opacity="0.5"
                         d="M86 100L86 -3.69549e-06"
-                        stroke="black"
+                        stroke={color}
                         stroke-width="4"
                         stroke-linejoin="round"
                       />
-                      <g opacity="0.5">
-                        <circle cx="85.5" cy="50" r="4" fill="#FFD533" />
-                        <circle
-                          cx="85.5"
-                          cy="50"
-                          r="3.5"
-                          stroke="black"
-                          stroke-opacity="0.88"
-                        />
-                      </g>
+                      <circle cx="85.5" cy="50" r="4" fill="#FFD533" />
+                      <circle
+                        cx="85.5"
+                        cy="50"
+                        r="3.5"
+                        stroke={color}
+                        stroke-opacity="0.88"
+                      />
                       <path
                         opacity="0.5"
                         d="M117.387 50L114.5 47.1132L111.613 50L114.5 52.8868L117.387 50ZM90.5 50.5H114.5V49.5H90.5V50.5Z"
-                        fill="black"
+                        fill={color}
                         fill-opacity="0.88"
                       />
                       <defs>
                         <filter
-                          id="filter0_b_15401_17026"
+                          id="filter0_b_15401_17065"
                           x="152.5"
                           y="28"
-                          width="100"
+                          width="94"
                           height="44"
                           filterUnits="userSpaceOnUse"
                           color-interpolation-filters="sRGB"
@@ -380,21 +375,29 @@ const TimelineEvent: React.FC<TimelineEventProps> = ({
                           <feComposite
                             in2="SourceAlpha"
                             operator="in"
-                            result="effect1_backgroundBlur_15401_17026"
+                            result="effect1_backgroundBlur_15401_17065"
                           />
                           <feBlend
                             mode="normal"
                             in="SourceGraphic"
-                            in2="effect1_backgroundBlur_15401_17026"
+                            in2="effect1_backgroundBlur_15401_17065"
                             result="shape"
                           />
                         </filter>
-                        <clipPath id="clip0_15401_17026">
+                        <clipPath id="clip0_15401_17065">
+                          <rect
+                            width="20"
+                            height="20"
+                            fill="white"
+                            transform="translate(128.5 40)"
+                          />
+                        </clipPath>
+                        <clipPath id="clip1_15401_17065">
                           <rect
                             width="12"
                             height="12"
                             fill="white"
-                            transform="translate(248.5 44)"
+                            transform="translate(242.5 44)"
                           />
                         </clipPath>
                       </defs>
