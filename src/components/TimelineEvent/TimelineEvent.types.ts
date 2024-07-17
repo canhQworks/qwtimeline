@@ -8,10 +8,13 @@ export interface TimelineEventProps {
     topicProps?: any;
     time?: any;
     timeProps?: any;
+    timeCurrentProps?: any;
     title?: any;
     titleProps?: any;
     description?: any;
     descriptionProps?: any
     action?: any;
     direction? : string;
+    isCurrent? : boolean;
+    statusIcon? : any;
 }

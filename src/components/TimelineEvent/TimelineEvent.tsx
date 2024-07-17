@@ -6,6 +6,8 @@ import { Button } from "@mui/material";
 import { TimelineEventProps } from "./TimelineEvent.types";
 
 const TimelineEvent: React.FC<TimelineEventProps> = ({
+  isCurrent,
+  statusIcon: StatusIcon,
   classes,
   variant,
   first,
@@ -15,6 +17,7 @@ const TimelineEvent: React.FC<TimelineEventProps> = ({
   topicProps,
   time,
   timeProps,
+  timeCurrentProps,
   title,
   titleProps,
   description,
@@ -153,27 +156,48 @@ const TimelineEvent: React.FC<TimelineEventProps> = ({
                   sx={{
                     position: "absolute",
                     top: "40px",
-                    left: "60px",
+                    left: "0",
+                    textAlign: "left",
+                    height: "58px",
+                    zIndex: "9999999999",
+                  }}
+                >
+                  {isCurrent && (typeof time === "string" ? (
+                    <Typography variant="caption" {...timeCurrentProps}>
+                      {time}
+                    </Typography>
+                  ) : (
+                    time
+                  ))}
+
+                  {!isCurrent && (typeof time === "string" ? (
+                    <Typography variant="caption" {...timeProps}>
+                      {time}
+                    </Typography>
+                  ) : (
+                    time
+                  ))}
+                </Grid>
+                <Grid
+                  sx={{
+                    position: "absolute",
+                    top: "34px",
+                    left: "132px",
                     right: "0",
                     textAlign: "left",
                     height: "58px",
                     zIndex: "9999999999",
                   }}
                 >
-                  {typeof time === "string" ? (
-                    <Typography variant="caption" {...timeProps}>
-                      {time}
-                    </Typography>
-                  ) : (
-                    time
-                  )}
-
                   <Grid
                     container
-                    justifyContent={"space-between"}
+                    justifyContent={"flex-start"}
                     alignItems={"center"}
                   >
-                    <Grid item xs={9}>
+                    <Grid item xs={2} style={{ fontSize: "20px" }}>
+                      {StatusIcon && <StatusIcon />}
+                    </Grid>
+                    <Grid item>
                       {typeof title === "string" ? (
                         <Typography variant="h6" {...titleProps}>
                           {title}
@@ -182,7 +206,7 @@ const TimelineEvent: React.FC<TimelineEventProps> = ({
                         title
                       )}
                     </Grid>
-                    <Grid item xs={3} style={{ color: "#5555DC" }}>
+                    <Grid item  style={{ color: "#5555DC" }} ml={2}>
                       {Icon && description && (
                         <Typography
                           aria-owns={open ? "mouse-over-popover" : undefined}
@@ -212,49 +236,170 @@ const TimelineEvent: React.FC<TimelineEventProps> = ({
                         onClose={handlePopoverClose}
                         disableRestoreFocus
                       >
-                        <Typography sx={{padding: "8px"}} {...description}>{description}</Typography>
+                        <Typography sx={{ padding: "8px" }} {...description}>
+                          {description}
+                        </Typography>
                       </Popover>
                     </Grid>
                   </Grid>
                 </Grid>
-                <div style={{ height: "128px", position: "relative" }}>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="246"
-                    height="128"
-                    viewBox="0 0 246 128"
-                    fill="none"
-                  >
-                    <path
-                      d="M40.3868 63.9999L37.5 61.1132L34.6132 63.9999L37.5 66.8867L40.3868 63.9999ZM13.5 64.4999H37.5V63.4999H13.5V64.4999Z"
-                      fill={color}
-                      fill-opacity="0.88"
-                    />
-                    <path
-                      d="M5 128L5 4.76837e-06"
-                      stroke={color}
-                      stroke-width="4"
-                      stroke-linejoin="round"
-                    />
-                    <circle cx="4.5" cy="64" r="4" fill="#FFD533" />
-                    <circle
-                      cx="4.5"
-                      cy="64"
-                      r="3.5"
-                      stroke="black"
-                      stroke-opacity="0.88"
-                    />
-                    <defs>
-                      <clipPath id="clip0_15044_1464">
-                        <rect
-                          width="12"
-                          height="12"
-                          fill="white"
-                          transform="translate(223.5 70)"
+                <div style={{ height: "100px", position: "relative" }}>
+                  {isCurrent ? (
+                    <svg
+                      width="319"
+                      height="100"
+                      viewBox="0 0 319 100"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M86 100L86 -3.69549e-06"
+                        stroke="black"
+                        stroke-width="4"
+                        stroke-linejoin="round"
+                      />
+                      <circle cx="85.5" cy="50" r="4" fill="#FFD533" />
+                      <circle
+                        cx="85.5"
+                        cy="50"
+                        r="3.5"
+                        stroke="black"
+                        stroke-opacity="0.88"
+                      />
+                      <path
+                        d="M117.387 50L114.5 47.1132L111.613 50L114.5 52.8868L117.387 50ZM90.5 50.5H114.5V49.5H90.5V50.5Z"
+                        fill="black"
+                        fill-opacity="0.88"
+                      />
+                      <defs>
+                        <filter
+                          id="filter0_b_15401_17091"
+                          x="152.5"
+                          y="28"
+                          width="95"
+                          height="44"
+                          filterUnits="userSpaceOnUse"
+                          color-interpolation-filters="sRGB"
+                        >
+                          <feFlood
+                            flood-opacity="0"
+                            result="BackgroundImageFix"
+                          />
+                          <feGaussianBlur
+                            in="BackgroundImageFix"
+                            stdDeviation="5"
+                          />
+                          <feComposite
+                            in2="SourceAlpha"
+                            operator="in"
+                            result="effect1_backgroundBlur_15401_17091"
+                          />
+                          <feBlend
+                            mode="normal"
+                            in="SourceGraphic"
+                            in2="effect1_backgroundBlur_15401_17091"
+                            result="shape"
+                          />
+                        </filter>
+                        <clipPath id="clip0_15401_17091">
+                          <rect
+                            width="20"
+                            height="20"
+                            fill="white"
+                            transform="translate(128.5 40)"
+                          />
+                        </clipPath>
+                        <clipPath id="clip1_15401_17091">
+                          <rect
+                            width="12"
+                            height="12"
+                            fill="white"
+                            transform="translate(243.5 44)"
+                          />
+                        </clipPath>
+                      </defs>
+                    </svg>
+                  ) : (
+                    <svg
+                      width="319"
+                      height="100"
+                      viewBox="0 0 319 100"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <rect
+                        x="4.5"
+                        y="40"
+                        width="73"
+                        height="20"
+                        rx="10"
+                        fill="white"
+                        fill-opacity="0.9"
+                      />
+                      <path
+                        opacity="0.5"
+                        d="M86 100L86 -3.69549e-06"
+                        stroke="black"
+                        stroke-width="4"
+                        stroke-linejoin="round"
+                      />
+                      <g opacity="0.5">
+                        <circle cx="85.5" cy="50" r="4" fill="#FFD533" />
+                        <circle
+                          cx="85.5"
+                          cy="50"
+                          r="3.5"
+                          stroke="black"
+                          stroke-opacity="0.88"
                         />
-                      </clipPath>
-                    </defs>
-                  </svg>
+                      </g>
+                      <path
+                        opacity="0.5"
+                        d="M117.387 50L114.5 47.1132L111.613 50L114.5 52.8868L117.387 50ZM90.5 50.5H114.5V49.5H90.5V50.5Z"
+                        fill="black"
+                        fill-opacity="0.88"
+                      />
+                      <defs>
+                        <filter
+                          id="filter0_b_15401_17026"
+                          x="152.5"
+                          y="28"
+                          width="100"
+                          height="44"
+                          filterUnits="userSpaceOnUse"
+                          color-interpolation-filters="sRGB"
+                        >
+                          <feFlood
+                            flood-opacity="0"
+                            result="BackgroundImageFix"
+                          />
+                          <feGaussianBlur
+                            in="BackgroundImageFix"
+                            stdDeviation="5"
+                          />
+                          <feComposite
+                            in2="SourceAlpha"
+                            operator="in"
+                            result="effect1_backgroundBlur_15401_17026"
+                          />
+                          <feBlend
+                            mode="normal"
+                            in="SourceGraphic"
+                            in2="effect1_backgroundBlur_15401_17026"
+                            result="shape"
+                          />
+                        </filter>
+                        <clipPath id="clip0_15401_17026">
+                          <rect
+                            width="12"
+                            height="12"
+                            fill="white"
+                            transform="translate(248.5 44)"
+                          />
+                        </clipPath>
+                      </defs>
+                    </svg>
+                  )}
                 </div>
               </>
             ) : (
