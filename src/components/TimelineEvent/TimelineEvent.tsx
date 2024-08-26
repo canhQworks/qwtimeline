@@ -201,7 +201,7 @@ const TimelineEvent: React.FC<TimelineEventProps> = ({
                       xs={2}
                       style={{ fontSize: "20px", color: color, fill: color }}
                     >
-                      {StatusIcon && <StatusIcon />}
+                      {StatusIcon}
                     </Grid>
                     <Grid item>
                       {typeof title === "string" ? (
